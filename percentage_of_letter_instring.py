@@ -5,6 +5,6 @@ def percentageLetter(s: str, letter: str) -> int:
     for item in s:
         if letter == item:
             count+=1
-    return round((count/num)*100)
+    return int((count/num)*100)
     
 print(percentageLetter('foobar','o'))
