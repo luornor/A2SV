@@ -1,18 +1,17 @@
 def count_primes(n):
-    n_list = [i for i in range(1,n)]
-    lenght = len(n_list)
-    modulo = 2
-    countPrimes = []
-    print(n_list)
-    for item in n_list[1:]:
-        if item==2:
-            countPrimes.append(item)
-        else:
-            if item%modulo==0:
-                n_list.remove(item)
-                modulo+=1
+    prime_count = 0
+    is_prime = [True]*n
+    is_prime[0]=False
+    is_prime[1]=False
+    for i in range(2,n):    
+        if is_prime[i]: #take each item in prime list
+            for j in range(i*i,n,i): #mark all its multiples
+                is_prime[j]=False    
+            prime_count+=1
+    print(prime_count)
 
-            
-    return countPrimes.count()
 
-print(count_primes(10))
+
+
+n = int(input())
+count_primes(n)
