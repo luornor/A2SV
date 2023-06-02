@@ -3,8 +3,8 @@ if __name__ == '__main__':
     y = int(input())
     z = int(input())
     n = int(input())
-
-    ans = [[i,j,k] for i in range(n+1) if i<=x for j in range(n+1) if j<=y for k in range(n+1) if k<=z and i+j+k!=n]
+    if n<0:n=abs(n)
+    ans = [[i,j,k] for i in range(n+x) if i<=x for j in range(n+y) if j<=y for k in range(n+z) if k<=z and i+j+k != n]
     print(ans)
 
 
