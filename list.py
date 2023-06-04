@@ -1,19 +1,24 @@
 if __name__ == '__main__':
     N = int(input())
 
-    def insert_item(list,x,y):
-        return list.insert(x,y)
+    ans = []
 
     def execute(list):
-        if 'print' in list:
-            print(list)
-        elif 'sort' in list:
-            list.sort()
-        elif 'pop' in list:
-            list.pop()
-        elif 'reverse' in list:
-            list.reverse()
-        elif ''
+        if list[0]=='print':
+            print(ans)
+        elif list[0]=='sort':
+            ans.sort()
+        elif list[0]=='pop':
+            ans.pop()
+        elif list[0]=='reverse':
+            ans.reverse()
+        elif list[0]=='insert':
+            ans.insert(int(list[1]),int(list[2]))
+        elif list[0]=='append' in list:
+            ans.append(int(list[1]))
+        elif list[0]=='remove':
+            ans.remove(int(list[1]))
+        return 
 
             
 
@@ -22,6 +27,8 @@ if __name__ == '__main__':
     for i in range(N):
         command = input().split()
         execute(command)
+
+    
 
     
 
