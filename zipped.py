@@ -4,22 +4,20 @@ N,X = input().split() #number of students #number of subjects
 
 all_grades = [] 
 for _ in range(int(X)):
-    grades = list(map(float, input().split()))
+    grades = list(map(float,input().split()))
     all_grades.append(grades)
 
-num = 0
-index = 0
-avg_scores = []
-for i in range(int(N)):
-    if index==len(all_grades[i]):
-        break
-    num+=all_grades[i][index]
-    avg_scores.append(num/int(X))
-    index+=1
-    
-print(all_grades)
-for num in avg_scores:
-    print(num)
+grade_sum = 0
+for x in list(zip(*all_grades)):
+    grade_list = list(x)
+    for i in range(len(grade_list)):
+        grade_sum+=grade_list[i]
+    if int(X)>3:
+        print(format(grade_sum/int(X),'.2f'))
+    else:
+        print(format(grade_sum/int(X),'.1f'))
+
+    grade_sum=0
     
     
     
