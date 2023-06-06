@@ -1,16 +1,34 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
 A = set(input())
 
 N = int(input())
 sets = [set(input().split()) for i in range(N)]
 
-flag=[]
-for item in sets:
-    if A.issuperset(item):
-        flag.append(True)
-    else:
-        flag.append(False)
-if flag.count(True)==N:
-    print(True)
-else:
-    print(False)
+
+
+print(all(A.issuperset(item) for item in sets))
+
+
+
+
+
+
+# s = set(map(int, input().split()))
+# inp = int(input())
+# res = True 
+
+# while(inp):
+#     a = set(map(int, input().split()))
+#     if len(s) <= len(a):
+#         res = False
+#         print(res)
+#         sys.exit()
+#     if len(s) > len(a):
+#         res = s.issuperset(a)
+#         if not res:
+#             break
+    
+#     inp -= 1
+# print(res)
+
 
