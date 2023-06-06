@@ -9,7 +9,7 @@ for item in sets:
         flag.append(True)
     else:
         flag.append(False)
-if flag.count(True)==len(flag):
+if flag.count(True)==N:
     print(True)
 else:
     print(False)
