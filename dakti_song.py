@@ -16,7 +16,8 @@ def sorting_condition(word):
 def remove_numbers(string):
     result = ''
     for chr in string:
-        if not chr.isdigit(): #if it is not a digit
+        #if it is not a digit
+        if not chr.isdigit(): 
             result+=chr
     return result
 
