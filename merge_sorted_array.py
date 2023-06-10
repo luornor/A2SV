@@ -28,10 +28,6 @@ def merge(nums1: list[int], m: int, nums2: list[int], n: int) -> None:
             num2_index-=1
         k-=1
 
-    while num2_index>=0:
-        nums1[k] = nums2[num2_index]
-        k-=1
-        num2_index-=1
     
     
 
