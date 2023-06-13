@@ -1,7 +1,7 @@
 """
 An array b of m
 positive integers is good if for all pairs i and j (1≤i,j≤m),
- max(bi,bj) is divisible by min(bi,bj)
+max(bi,bj) is divisible by min(bi,bj)
 You are given an array a of n positive integers. 
 You can perform the following operation:
 
@@ -15,22 +15,13 @@ It can be proven that under the constraints of the problem,
 """
 N=int(input())
 
-def solve(a,n):
-    p = 0
-    i = 1
-    x = a[0]
-    res = []
-    while i<=n:
-        a[i] = a[i]+x
-        p+=1
-        i+=1
-        res.append([i,x])
-    print(p)
-    for i in range(p):
-        print(*res[i])
+def nearest_power_of_tw0(a,n):
+    
     
 
-for _ in range(N):
-    n = int(input()) 
-    a = list(map(int,input().split()))
-    solve(a,n)
+
+     
+for i in range(n):
+    val = nearest_power_of_two(a[i])
+    x = (val - a[i]) 
+    print(i + 1,x)
