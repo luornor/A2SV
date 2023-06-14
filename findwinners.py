@@ -9,6 +9,7 @@ The values in the two lists should be returned in increasing order.
 Note:
 You should only consider the players that have played at least one match.
 The testcases will be generated such that no two matches will have the same outcome.
+[[1,3],[2,3],[3,6],[5,6],[5,7],[4,5],[4,8],[4,9],[10,4],[10,9]
 Players 1, 2, and 10 have not lost any matches.
 Players 4, 5, 7, and 8 each have lost one match.
 Players 3, 6, and 9 each have lost two matches.
@@ -19,3 +20,20 @@ Players 3 and 4 each have lost two matches.
 Thus, answer[0] = [1,2,5,6] and answer[1] = [].
 """
 def findWinners(matches: list[list[int]]) -> list[list[int]]:
+    winners = [item[0] for item in matches]
+    lossers = [i[1] for i in matches]
+    one_loss = []
+
+    no_loss = list(set(winners).difference(set(lossers)))
+    for num in lossers:
+        if lossers.count(num)==1:
+            for match in matches:
+                if match[1]==num:
+                    one_loss.append(num)
+        
+
+    return [sorted(no_loss),sorted(one_loss)]
+
+
+print(findWinners([[1,3],[2,3],[3,6],[5,6],[5,7],[4,5],[4,8],[4,9],[10,4],[10,9]]))
+

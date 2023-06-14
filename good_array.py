@@ -14,14 +14,19 @@ It can be proven that under the constraints of the problem,
  such a sequence of operations always exists.
 """
 N=int(input())
+import math
 
-def nearest_power_of_tw0(a,n):
-    
-    
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    for i in range(n):
+        val = nearest_power_of_two(a[i])
+        x = (val - a[i]) 
+        print(i + 1,x)
+
+def nearest_power_of_two(num):
+    return num**2
 
 
-     
-for i in range(n):
-    val = nearest_power_of_two(a[i])
-    x = (val - a[i]) 
-    print(i + 1,x)
+for i in range(N):
+    solve()
