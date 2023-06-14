@@ -20,19 +20,23 @@ Players 3 and 4 each have lost two matches.
 Thus, answer[0] = [1,2,5,6] and answer[1] = [].
 """
 def findWinners(matches: list[list[int]]) -> list[list[int]]:
-    winners = [item[0] for item in matches]
-    lossers = [i[1] for i in matches]
+    lossers = {}
+    for w,l in matches:
+        if l in lossers:
+            lossers[l]+=1
+        else:
+            lossers[l]=1
+    print(lossers)
+    no_loss = set()
     one_loss = []
-
-    no_loss = list(set(winners).difference(set(lossers)))
-    for num in lossers:
-        if lossers.count(num)==1:
-            for match in matches:
-                if match[1]==num:
-                    one_loss.append(num)
-        
-
-    return [sorted(no_loss),sorted(one_loss)]
+    for w,l in matches:
+        if w not in lossers:
+            no_loss.add(w)
+        if lossers[l]==1:
+            one_loss.append(l)
+    
+    ans = [sorted(list(no_loss)),sorted(one_loss)]
+    return ans
 
 
 print(findWinners([[1,3],[2,3],[3,6],[5,6],[5,7],[4,5],[4,8],[4,9],[10,4],[10,9]]))

@@ -14,7 +14,6 @@ It can be proven that under the constraints of the problem,
  such a sequence of operations always exists.
 """
 N=int(input())
-import math
 
 def solve():
     n = int(input())
