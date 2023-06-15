@@ -23,27 +23,17 @@ Then print n3 numbers — the elements that got to the third set.
 
 
 def solve(elements):
-    set_neg = []
-    set_pos = []
-    set_zero = []
-    for num in elements:
-        if num<0:
-            set_neg.append(num)
-        elif num>0:
-            set_pos.append(num)
-        elif num==0:
-            set_zero.append(num)
-    
-    if len(set_neg)%2==0:
-        if len(set_pos)==0:
-            set_pos.append(set_neg.pop())
-            set_pos.append(set_neg.pop())
-        else:
-            set_zero.append(set_neg.pop())
-    else:
-        if len(set_pos)==0:
-            set_pos.append(set_neg.pop())
-            set_pos.append(set_neg.pop())
+    elements.sort()
+    set_neg = [elements[0]]
+    elements.pop(0)
+    set_pos = [x for x in elements if x!=0]
+    set_zero = [x for x in elements if x==0]
+  
+    num_neg = [x for x in set_pos if x<0]
+
+    if len(num_neg)%2==1:
+        set_zero.append(set_pos[0])
+        set_pos.pop(0)
            
     print(len(set_neg),*set_neg)
     print(len(set_pos),*set_pos)

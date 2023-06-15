@@ -11,7 +11,7 @@ After this operation, ai ≤ 10^18should be satisfied.
 You have to construct a sequence of at most n
 operations that will make a good.
 It can be proven that under the constraints of the problem,
- such a sequence of operations always exists.
+such a sequence of operations always exists.
 """
 N=int(input())
 
