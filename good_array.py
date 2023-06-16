@@ -12,6 +12,20 @@ You have to construct a sequence of at most n
 operations that will make a good.
 It can be proven that under the constraints of the problem,
 such a sequence of operations always exists.
+Input
+Each test contains multiple test cases. The first line contains a single integer t(1≤t≤104) — the number of test cases. 
+The description of the test cases follows.
+
+The first line of each test case contains a single integer n(1≤n≤10^5) — the length of the array a.
+
+The second line of each test case contains n space-separated integers a1,a2,…,an(1≤ai≤109) — representing the array a.
+
+Output
+For each test, output a single integer p(0≤p≤n) — denoting the number of operations in your solution.
+
+In each of the following p lines, output two space-separated integers — i and x.
+
+You do not need to minimize the number of operations. It can be proven that a solution always exists.
 """
 N=int(input())
 

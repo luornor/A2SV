@@ -27,7 +27,7 @@ def solve(elements):
     set_neg = [elements[0]]
     elements.pop(0)
     set_pos = [x for x in elements if x!=0]
-    set_zero = [x for x in elements if x==0]
+    set_zero =[x for x in elements if x==0]
   
     num_neg = [x for x in set_pos if x<0]
 
