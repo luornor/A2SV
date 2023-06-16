@@ -21,8 +21,7 @@ def commonChars(words: list[str]) -> list[str]:
                     # if ch in check:
                     #     check[ch]+=1
                     # else:
-                    #     check[ch]=1
-                
+                    #     check[ch]=1     
             letter_count = check
                     
         common_list = [key for key, value in letter_count.items() for _ in range(value)]
@@ -34,5 +33,5 @@ def commonChars(words: list[str]) -> list[str]:
         
                        
 
-print(commonChars(["cool","lock","cook"]))
-# print(commonChars(["bella","label","roller"]))
+#print(commonChars(["cool","lock","cook"]))
+print(commonChars(["bella","label","roller"]))

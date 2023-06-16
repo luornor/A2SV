@@ -7,7 +7,7 @@ You can perform the following operation:
 
 Select an index i (1≤i≤n) and an integer x
 (0≤x≤ai) and add x to ai in other words, ai:=ai+x
-After this operation, ai ≤ 10^18should be satisfied.
+After this operation, ai ≤ 10^18 should be satisfied.
 You have to construct a sequence of at most n
 operations that will make a good.
 It can be proven that under the constraints of the problem,
@@ -27,18 +27,29 @@ In each of the following p lines, output two space-separated integers — i and 
 
 You do not need to minimize the number of operations. It can be proven that a solution always exists.
 """
+import math
 N=int(input())
 
 def solve():
     n = int(input())
     a = list(map(int, input().split()))
-    for i in range(n):
-        val = nearest_power_of_two(a[i])
-        x = (val - a[i]) 
-        print(i + 1,x)
+    
+    # sort the array in non-decreasing order
+    a.sort()
 
-def nearest_power_of_two(num):
-    return num**2
+    # construct a good array
+    operations = []
+    for i in range(1, n):
+        x = math.ceil(a[i] / a[i-1]) * a[i-1] - a[i]
+        a[i] += x
+        operations.append((i, x))
+
+    # output the number of operations and the operations themselves
+    print(len(operations))
+    for op in operations:
+        print(op[0], op[1])
+
+
 
 
 for i in range(N):
