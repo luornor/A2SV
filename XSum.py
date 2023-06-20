@@ -34,6 +34,7 @@ def xSum(board):
         for j in range(col):
              # the value of the current cell
             sum_attacked = board[i][j]
+            
             # check up-left diagonal
             x,y = i,j
             while x>0 and y>0:
