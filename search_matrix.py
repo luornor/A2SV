@@ -1,4 +1,3 @@
-
 def searchMatrix(matrix: list[list[int]], target: int) -> bool:
     row=0
     col=0
@@ -11,6 +10,27 @@ def searchMatrix(matrix: list[list[int]], target: int) -> bool:
             col+=1
         col=0
         row+=1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # O(log(m*n)) implementation
 # def searchMatrix(matrix, target):
