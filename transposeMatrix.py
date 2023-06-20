@@ -8,9 +8,6 @@ def transpose(matrix: list[list[int]]) -> list[list[int]]:
                   new_mat[col][row]=matrix[row][col]
         return new_mat
                   
-                
-
-        
-        
+                   
 
 print(transpose([[1,2,3],[4,5,6]]))
