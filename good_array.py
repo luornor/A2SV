@@ -27,22 +27,19 @@ In each of the following p lines, output two space-separated integers — i and 
 
 You do not need to minimize the number of operations. It can be proven that a solution always exists.
 """
-import math
 N=int(input())
 
 def solve():
     n = int(input())
     a = list(map(int, input().split()))
     a_copy = a.copy()
-
     # sort the array in non-decreasing order
     a.sort()
-
     # construct a good array
     operations = []
     for i in range(1, n):
         idx = a_copy.index(a[i])
-        x = (a[i - 1] - (a[i] % a[i - 1])) % a[i - 1]
+        x = (a[i - 1] - (a[i] % a[i - 1]))
         a[i] += x
         operations.append((idx+1, x))
         a_copy[idx] = -1
@@ -56,19 +53,3 @@ for i in range(N):
     solve()
 
 
-# for _ in range(int(input())):
-#     n = int(input())
-#     data = list(map(int, input().split()))
-#     data_copy = data.copy()
-#     operations = []
-#     data.sort()
-#     for i in range(1,n):
-#         idx = data_copy.index(data[i])
-#         remainder = (data[i-1] -(data[i]%data[i-1]) )% data[i-1] 
-#         data[i] += remainder 
-#         if remainder:
-#             operations.append((idx+1, remainder))
-#         data_copy[idx] = -1
-#     print(len(operations))
-#     for i in sorted(operations, key= lambda x: x[0]):
-#         print(*i)

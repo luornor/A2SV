@@ -31,22 +31,46 @@ You can print each letter in any case (upper or lower).
 """
 t = int(input())
 def solve(n,a):
-    min_a = min(a)
-    max_a = max(a)
 
-    if max_a - min_a >= len(a):
-        return 'YES\n{} {}'.format(a.index(min_a),a.index(max_a)+1)
-    
-    # for i in range(n-1):
-    #     if abs(a[i] - a[i+1]) >=2:
-    #         return 'YES\n{} {}'.format(i+1,i+2)
-        
-    return 'NO'
-    
+   for i in range(n):
+        min_a = a[i]
+        max_a = a[i]
+        for j in range(i+1,n):
+            min_a = min(min_a,a[j])
+            max_a = max(max_a,a[j])
+            if max_a-min_a>=2:
+                print('YES')
+                print(i+1,j+1)
+                break
+            else:
+                continue
+        break
+   else:
+       print('NO')
+           
 
 for _ in range(t):
     n = int(input())
     a = list(map(int, input().split()))
-    print(solve(n,a))
+    solve(n,a)
 
 
+t = int(input())  # Number of test cases
+
+for _ in range(t):
+    n = int(input())  # Length of the array
+    a = list(map(int, input().split()))  # Elements of the array
+    
+    max_diff = -1
+    max_diff_index = -1
+
+    for i in range(n):
+        if a[i] > max_diff:
+            max_diff = a[i]
+            max_diff_index = i
+
+    if max_diff_index == 0 or max_diff_index == n - 1:
+        print("NO")
+    else:
+        print("YES")
+        print(max_diff_index, max_diff_index + 1)
