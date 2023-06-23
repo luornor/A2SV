@@ -4,8 +4,8 @@ We will call an array a of k integers interesting if max(a)-min(a)≥k.
 For example, array [1,3,4,3] isn't interesting as max(a)-min(a)=4-1=3<4
 while array [7,3,0,4,3] is as max(a)-min(a)=7-0=7≥5.
 
-You are given an array a of n integers. Find some interesting nonempty subarray of a
-,or tell that it doesn't exist.
+You are given an array a of n integers. Find some interesting nonempty subarray of a,
+or tell that it doesn't exist.
 
 An array b is a subarray of an array a if b can be obtained from a
 by deletion of several (possibly, zero or all) elements from the beginning and several (possibly, zero or all) 
@@ -35,17 +35,18 @@ def solve(n,a):
     max_a = max(a)
 
     if max_a - min_a >= len(a):
-        return 'YES'
+        return 'YES\n{} {}'.format(a.index(min_a),a.index(max_a)+1)
     
-    for i in range(n-1):
-        if abs(a[i] - a[i+1]) >=2:
-            return 'YES\n {} {}'.format(i+1,i+2)
-    
+    # for i in range(n-1):
+    #     if abs(a[i] - a[i+1]) >=2:
+    #         return 'YES\n{} {}'.format(i+1,i+2)
+        
     return 'NO'
     
-
 
 for _ in range(t):
     n = int(input())
     a = list(map(int, input().split()))
     print(solve(n,a))
+
+
