@@ -7,7 +7,7 @@ You must do it in place.
 def setZeroes(matrix: list[list[int]]) -> None:
         """Do not return anything, modify matrix in-place instead."""
         x = 1
-        y = 1
+        y = 1 
         rows = len(matrix)
         cols = len(matrix[0])
         #check if a number in the first row is already zero(natural)
@@ -41,7 +41,6 @@ def setZeroes(matrix: list[list[int]]) -> None:
             if matrix[row][0]==0:
                 for col in range(cols):
                     matrix[row][col]=0
-
         # check if there is any natural zero in the column
         if y==0:
             for row in range(rows):
