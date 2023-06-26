@@ -19,12 +19,7 @@ burles in coins; otherwise, print NO. You may print each letter in any case
 """
 t = int(input())
 def solve(n,k):
-    if k == 1:  # Special case when k = 1
-        if n % 2 == 0:
-            print('YES')
-        else:
-            print('NO')
-    elif (n % 2 == 0 and k % 2 == 0) or (n % 2 != 0 and k % 2 != 0):
+    if (n-k)%2==0 or n%2==0 or n%k==0:
         print('YES')
     else:
         print('NO')

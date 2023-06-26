@@ -13,23 +13,12 @@ n = int(input())
 def solve(a):
     n = len(a)
     num_sum = sum(a)
-    idx = []
+    ans = []
     for  i in range(n): 
-        avg = (num_sum-a[i])/(n-1)
-        check(avg,a[i],i,idx)
-    
-    if idx:
-        print(len(idx))
-        for i,val in enumerate(idx):
-            print(val, end=' ')
-    else:
-        print(0)
-        print(' ')
-    
-def check(avg,num,i,idx):
-    tolerance = 1e-9 
-    if abs(avg - num) <= tolerance:
-        idx.append(i + 1)
+        if  (num_sum-a[i])==a[i]*n-a[i]:
+            ans.append(i+1)
+    print(len(ans))
+    print(*ans)
 
 a = list(map(int, input().split()))
 solve(a)
