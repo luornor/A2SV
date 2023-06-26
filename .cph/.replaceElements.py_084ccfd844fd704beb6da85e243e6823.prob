@@ -1,0 +1,1 @@
+{"name":"Local: replaceElements","url":"c:\\Users\\NATHAN LUORNOR\\Desktop\\Python_Projects\\A2SV\\replaceElements.py","tests":[{"id":1687772140267,"input":"[17,18,5,4,6,1]","output":"[18,6,6,6,1,-1]"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\NATHAN LUORNOR\\Desktop\\Python_Projects\\A2SV\\replaceElements.py","group":"local","local":true}
