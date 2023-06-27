@@ -14,10 +14,12 @@ def validMountainArray(arr):
     n = len(arr)
     strict_increase = False
     strict_decrease = False
+    # find maximum number and it's index
     max_val = max(arr)
     idx = arr.index(max_val)
     if n < 3:
         return False
+    # maximum number cannot be at the ends of the list
     if idx==0 or idx==n-1:
         return False
     for i in range(idx):
