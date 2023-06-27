@@ -7,7 +7,8 @@ def transpose(matrix: list[list[int]]) -> list[list[int]]:
             for row in range(rows):
                   new_mat[col][row]=matrix[row][col]
         return new_mat
+
                   
                    
 
-print(transpose([[1,2,3],[4,5,6]]))
+print(transpose([[1,2,3],[4,5,6],[7,8,9]]))
