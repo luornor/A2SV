@@ -25,42 +25,48 @@ Print the encrypted word on a single line.
 It is guaranteed that the answer consists of at least one letter.
 
 """
-n,m = map(int,input().split())
+rows,cols = map(int,input().split())
 
-def transpose(matrix):
-    rows = len(matrix)
-    cols = len(matrix[0])
-    new_mat = [[0] * rows for i in range(cols)]
-        
-    for col in range(cols):
-        for row in range(rows):
-                new_mat[col][row]=matrix[row][col]
-    return new_mat
+matrix = [input() for _ in range(rows)]
 
-def solve(mat):
-    rows = len(mat)
-    cols = len(mat[0])
-    for i in range(cols-1):
-        for j in range(rows-1):
-            if mat[j][i]==mat[j+1][i+1]:
-                mat[j][i]=None
-                mat[j+1][i+1]=None    
-              
-    column_grid = transpose(mat)
+def crosswordSolve(grid,rows,cols):
+    # create a boolean grid to mark repeated letters in grid
+    cross_out = [[False for _ in range(cols)] for _ in range(rows)]
+    #for rows
+    # keep of track of counts of each letter for a row
+    for r in range(rows):
+        row_counts = {}
+        for c in range(cols):
+            current = grid[r][c]
+            row_counts[current] = row_counts.get(current,0)+1
+
+        # check if letter appears more than once in a row 
+        # and mark its position in the cross_out  grid as True if it does
+        for c in range(cols):
+            if row_counts[grid[r][c]] > 1:
+                cross_out[r][c]=True
+    #For columns
+    #keep track of counts of each letter in a column
+    for c in range(cols):
+        col_counts = {}
+        for r in range(rows):
+            current = grid[r][c]
+            col_counts[current]=col_counts.get(current,0)+1
+
+        # check if letter appears more than once in a column 
+        # and mark its position in the cross_out grid as True If it does 
+        for r in range(rows):
+            letter = grid[r][c]
+            if col_counts[letter]>1:
+                cross_out[r][c]=True
+
+    #create the encrypted word
+    encrypted_word = ""
+    for r in range(rows):
+        for c in range(cols):
+            if not cross_out[r][c]:
+                encrypted_word+= grid[r][c]
+
+    return encrypted_word
     
-    for i in range(len(column_grid)-1):
-        for j in range(len(column_grid[0])-1):
-             if column_grid[i][j]==column_grid[i+1][j+1]:
-                column_grid[i][j]=None
-                column_grid[i+1][j+1] = None
-    print(mat)            
-    print(column_grid)
-
-
-# grid= []
-# for _ in range(n):
-#     m = list(input())
-#     grid.append(m)
-
-
-print(solve([['c', 'b', 'a'], ['b', 'c', 'd'], ['c', 'b', 'c']]))
+print(crosswordSolve(matrix,rows,cols))
