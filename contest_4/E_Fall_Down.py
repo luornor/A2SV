@@ -8,15 +8,13 @@ def simulate_fall(grid):
         #move through each row from buttom to top except last row
         for r in range(rows-1,-1,-1):
             #if we find a stone
-            if grid[r][c] == '*':
-                #we loop through the column from buttom to top row
-                # and let the stone fall
-                for i in range(rows-1,-1,-1):
-                    if grid[i][c] == '*' and grid[i+1][c]=='.':
-                        grid[i][c]= '.'
-                        grid[i+1][c]='*'
-                else:
-                    continue
+            #we loop through the column from buttom to top row
+            # and let the stone fall
+            for i in range(rows-2,-1,-1):
+                while grid[i][c] == '*' and grid[i+1][c]=='.':
+                    grid[i][c]= '.'
+                    grid[i+1][c]='*'
+    
     return grid
 
 

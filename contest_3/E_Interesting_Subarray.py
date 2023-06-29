@@ -29,6 +29,7 @@ Otherwise, output "YES" in a separate line. In the next line, output two integer
 
 You can print each letter in any case (upper or lower).
 """
+
 t = int(input())
 
 def solve(n,a):
@@ -36,7 +37,7 @@ def solve(n,a):
     for i in range(1,n):
         if abs(a[i]-a[i-1])>=2:
             print('YES')
-            print(i,i+1)
+            print(i,n)
             p = 1
             break
 
@@ -44,7 +45,6 @@ def solve(n,a):
         print('NO')
 
            
-
 for _ in range(t):
     n = int(input())
     a = list(map(int, input().split()))

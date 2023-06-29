@@ -1,6 +1,6 @@
 n = int(input())
 
-
+#upper half of parttern
 for i in range(n+1):
     # Determine the number of spaces before the digits on each line
     spaces = " "*(n-i)*2
@@ -17,6 +17,7 @@ for i in range(n+1):
         print(spaces + str(i))
 
 
+#lower half of pattern
 for i in range(n-1,-1,-1):
 
     # Determine the number of spaces before the digits on each line
