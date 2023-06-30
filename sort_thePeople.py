@@ -1,4 +1,4 @@
-def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+def sortPeople(names, heights):
         #[180,165,170]
         people = [(names[i],heights[i]) for i in range(len(heights))]
         
