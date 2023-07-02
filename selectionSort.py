@@ -6,13 +6,11 @@ class Solution:
     def selectionSort(self, arr,n):
         #code here
         # 4,1,3,9,7
-        min_index = 0
-        min_num = arr[0] #4 is min num
+        
         for i in range(n):
-            min_num = arr[i] #4 
+            min_index = i #4
             for j in range(i+1,n):
-                if arr[j]<min_num:#1<4
-                    min_num=arr[j]# min=1
+                if arr[j]<arr[min_index]:#1<4
                     min_index=j #min_index=1
             #swap 1 with 4
             arr[i],arr[min_index] = arr[min_index],arr[i]
