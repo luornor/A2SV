@@ -23,6 +23,8 @@ def insertionSort1(n, arr):
     #         arr[j-1],arr[j] = arr[j],arr[j-1]
     #         print(*arr)
     #         j-=1
+    
+    #part 1
     key= arr[n-1]
     i = n-1
     
