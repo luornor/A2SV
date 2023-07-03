@@ -1,6 +1,3 @@
-from collections import Counter, defaultdict
-
-
 t = int(input())
 
 def solve(l,n):
@@ -15,17 +12,16 @@ def solve(l,n):
         return 'NO'
     
     for i in range(n-1):
-        x = l[i] #take the first element
-        if x==-1:
+        r = l[i] #take the first element
+        if r==-1:
             continue
-
         for j in range(i+1,n):
-            if l[j]==x-1: #compare max-1 to the next element
+            if l[j]==r-1: #compare max-1 to the next element
                 l[j] = -1 #if they are equal mark the element
-                x-=1 #then reduce the max_element
-            if x==0: #break if max==0
+                r-=1 #then reduce the max_element
+            if r==0: #break if max==0
                 break
-        if x!=0:
+        if r!=0:
             #if the inner loop finishes check if
             #the sequence is correct
             return 'NO'
