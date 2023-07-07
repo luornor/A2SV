@@ -1,5 +1,5 @@
 class Solution:
-    def maxCoins(self, piles: List[int]) -> int:
+    def maxCoins(self, piles: list[int]) -> int:
         piles.sort()
         k = len(piles)//3
         res= 0
