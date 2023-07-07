@@ -17,9 +17,7 @@ def solve(n,k,p):
     else:
         print(-1)
 
-	
-
-       
+    
 for _ in range(t):
     n,k = map(int,input().split())
     p = list(map(int,input().split()))

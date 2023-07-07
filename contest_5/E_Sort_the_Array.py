@@ -8,14 +8,14 @@ for i in range(n-1):
     if a[i]>a[i+1]:
         start = i
         break
-
+#find end index
 end = 0
 for i in range(n-1,0,-1):
     if a[i]<a[i-1]:
         end=i
         break
 
-#reverse the array numbers at start and end
+#reverse the array from the start to the end
 reverse_seg = a[start:end+1][::-1]
 # print(start)
 # print(end)

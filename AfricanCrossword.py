@@ -62,6 +62,8 @@ def crosswordSolve(grid,rows,cols):
 
     #create the encrypted word
     encrypted_word = ""
+    #add the letter to the word if it's position is marked
+    # false in the cross_out grid
     for r in range(rows):
         for c in range(cols):
             if not cross_out[r][c]:
