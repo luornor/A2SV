@@ -32,18 +32,21 @@ N=int(input())
 def solve():
     n = int(input())
     a = list(map(int, input().split()))
-    a_copy = a.copy()
+    idx = []
+    for i,val in enumerate(a):
+        idx.append((i,val))
+
     # sort the array in non-decreasing order
     a.sort()
     # construct a good array
     operations = []
     for i in range(1, n):
-        idx = a_copy.index(a[i])
-        x = (a[i - 1] - (a[i] % a[i - 1]))
-        a[i] += x
-        operations.append((idx+1, x))
-        a_copy[idx] = -1
-
+        num = a[i]
+        x = (a[i] // a[i-1])*a[i-1]
+        a[i] = x
+        operations.append((i+1, x))
+    
+    print(a)
     # output the number of operations and the operations themselves
     print(len(operations))
     for op in operations:
