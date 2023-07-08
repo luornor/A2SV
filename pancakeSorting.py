@@ -16,7 +16,7 @@ def pancakeSort(arr):
     #start from the end and focus on the largest number index
     for k in range(n-1,-1,-1):
         max_idx = k
-        for j in range(k):
+        for j in range(k,-1,-1):
             #find max number index
             if arr[j]>arr[max_idx]: max_idx=j
         #flip the array up to the max index
