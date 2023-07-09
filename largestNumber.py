@@ -1,6 +1,6 @@
 class Solution:
-    def largestNumber(self, nums: List[int]) -> str:
-        [3,30,34,5,9]
+    def largestNumber(self, nums: list[int]) -> str:
+        # [3,30,34,5,9]
         # 3,5,9,30,34
         #[9,909]
         #9099

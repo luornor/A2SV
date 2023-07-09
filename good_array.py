@@ -27,26 +27,27 @@ In each of the following p lines, output two space-separated integers — i and 
 
 You do not need to minimize the number of operations. It can be proven that a solution always exists.
 """
+
 N=int(input())
 
 def solve():
     n = int(input())
     a = list(map(int, input().split()))
-    idx = []
-    for i,val in enumerate(a):
-        idx.append((i,val))
+    a= [[val,i] for i,val in enumerate(a)]
+    
 
     # sort the array in non-decreasing order
     a.sort()
     # construct a good array
     operations = []
     for i in range(1, n):
-        num = a[i]
-        x = (a[i] // a[i-1])*a[i-1]
-        a[i] = x
-        operations.append((i+1, x))
-    
-    print(a)
+        x = (a[i][0] // a[i-1][0]) + 1
+        x = x * (a[i-1][0])
+        
+        if a[i][0] % a[i-1][0] != 0:
+            operations.append((a[i][1]+1, x-a[i][0]))
+            a[i][0] = x
+    # print(a)
     # output the number of operations and the operations themselves
     print(len(operations))
     for op in operations:
