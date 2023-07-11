@@ -20,14 +20,13 @@ def pancakeSort(arr):
             #find max number index
             if arr[j]>arr[max_idx]: max_idx=j
         #flip the array up to the max index
+        #flip up to k
         if k!=j:
             flip(max_idx)
             flip(k)
             res.append(max_idx+1)
             res.append(k+1)
 
-    
-        
-        return res
+    return res
 
-print(pancakeSort([3,2,4,1]))
+print(pancakeSort([6,6,6,4,1,9]))
