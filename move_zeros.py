@@ -11,26 +11,14 @@ for num in nums:
         nums.append(nums.pop(nums.index(num)))
 print(nums)
 
-# Approach
-# ● Set your read index accordingly to
-# your need
-# ● Set your write index accordingly to
-# your need
-# ● Your read should always move
-# ● Your write only moves after write
-# operation
-
-# def moveZeroes(nums: list[int]):
-#     write = 0
-#     read = 0
-#     while read < len(nums):
-#         if nums[read] != 0:
-#             #swap read with write
-#             temp = nums[read]
-#             nums[read] = nums[write]
-#             nums[write] = temp
-#             write = write + 1
-#         read = read + 1
-#     print(nums)
+plc = 0 #placeholder pointer
+seek = 0#seeker pointer
+while seek< len(nums):
+    if nums[seek]!=0:
+        nums[plc],nums[seek] = nums[seek],nums[plc]
+        plc+=1
+        seek+=1
+    else:
+        seek+=1
 
 # moveZeroes(nums)    
