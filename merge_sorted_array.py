@@ -27,15 +27,12 @@ def merge(nums1: list[int], m: int, nums2: list[int], n: int) -> None:
             nums1[k] = nums2[num2_index]
             num2_index-=1
         k-=1
+        
 
     
     
 
 
-    
-
-    
-         
 
 nums = [1,2,3,0,0,0]
 # nums = [1]
