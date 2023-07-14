@@ -1,1 +1,0 @@
-{"name":"Local: lecture_sleep","url":"c:\\Users\\NATHAN LUORNOR\\Desktop\\Python_Projects\\A2SV\\lecture_sleep.py","tests":[{"id":1686472204693,"input":"6 3\n1 3 5 2 5 4\n1 1 0 1 0 0","output":"16"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\NATHAN LUORNOR\\Desktop\\Python_Projects\\A2SV\\lecture_sleep.py","group":"local","local":true}
