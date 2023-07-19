@@ -10,24 +10,14 @@ def solve():
     #gaps between infected houses
     gaps = [(infected_houses[i] - infected_houses[i - 1] - 1) % n for i in range(m)]
     
-    houses = n
+    protected = 0   
+    num_infected = 0
     protected = 0
-    saved = 0
-    for i in range(len(gaps)):
-        gap_size = gaps[i] - 2*protected
-        if gap_size > 2:
-            saved += gap_size-1
-            protected += 2
-        else:
-            if gap_size == 1:
-                saved += 1
-                protected += 1
-            if gap_size==2:
-                saved += 1
-                protected += 1
-    #minimun number of houses protected
-    print(houses-saved)
-    
+    while len(gaps) > 0 and max(gaps)>num_infected:
+        removed = gaps.pop(0)
+        protected+=max(1, removed - 1 - num_infected)
+        num_infected+=4
+    print(n-protected)
 
 for _ in range(t):
     solve()

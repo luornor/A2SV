@@ -2,8 +2,7 @@ t = int(input())
 
 
 def solve():
-    n = int(input())
-    sequence = list(map(int,input().split()))
+    
     l = 0
     # r = 1
     res = []
@@ -12,4 +11,6 @@ def solve():
 
 
 for _ in range(t):
+    n = int(input())
+    sequence = list(map(int,input().split()))
     solve()

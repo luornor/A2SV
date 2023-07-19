@@ -1,5 +1,5 @@
 class Solution:
-    def partitionLabels(self, s: str) -> List[int]:
+    def partitionLabels(self, s: str):
         #"ababcbacadefegdehijhklij"
         # each letter apears in at most one part
         #store last index of each character in the string
