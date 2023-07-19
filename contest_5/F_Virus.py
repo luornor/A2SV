@@ -33,11 +33,12 @@ def solve():
     
     protected = 0   
     infected = 0
-    while len(segment) < 0 or max(segment)<infected:
-        removed = segment.pop(max(segment))
-        protected+=max(1, removed - 1 - float('inf'))
+    while len(segment) > 0 and max(segment)>infected:
+        idx = segment.index(max(segment))
+        removed = segment.pop(idx)
+        protected+=max(1, removed - 1 - infected)
         infected += 4
-    print(protected)
+    print(n-protected)
 
 for _ in range(t):
     solve()
