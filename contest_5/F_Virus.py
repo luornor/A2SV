@@ -1,8 +1,4 @@
 """
-This may help
-
-
-Step to do the virus problem 
 
 - storing the size of each segment in an array( will be array of integers), let say the name is arr
 
