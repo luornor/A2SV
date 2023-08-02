@@ -1,4 +1,4 @@
-def maximumSubarraySum(self, nums: List[int], k: int) -> int:
+def maximumSubarraySum(nums,k):
         currsum = 0
         maxsum = 0
         l = 0
