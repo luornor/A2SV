@@ -10,8 +10,27 @@ def findThePrefixCommonArray(A,B):
             if a==b==1:
                 res[i]+=a
 
-    
     return res
+
+    # hashmap = {}
+    # count = 0
+    # res = []
+
+    # for i in range(len(A)):
+    #     if A[i] not in hashmap:
+    #         hashmap[A[i]] = 1
+    #     else:
+    #         hashmap[A[i]] += 1
+    #         count += 1
+
+    #     if B[i] not in hashmap:
+    #         hashmap[B[i]] = 1
+    #     else:
+    #         hashmap[B[i]] += 1
+    #         count += 1
+    #     res.append(count)
+
+    # return res
 
 A = [1,3,2,4]
 B = [3,1,2,4]
