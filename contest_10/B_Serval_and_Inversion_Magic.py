@@ -1,29 +1,15 @@
 def solve(n,s):
-    l = 0
-    r = n-1
-    is_palidrome = False
-    while l<r:
-        if s[l]==s[r]:
-            s = inversion(s,l,r)
-            if s == s[::-1]:
-                is_palidrome==True
-                break
-        r-=1
-        l+=1
-        
-    if is_palidrome:
-        print('YES')
+    # Split the string into two halves
+    s1, s2 = s[:n//2], s[n//2 if n % 2 == 0 else n//2 + 1:][::-1]
+    # Count the number of 0s and 1s in each half
+    c1 = s1.count('0')
+    c2 = s2.count('0')
+    # Check if the number of 0s in s1 is equal to the number of 1s in s2 and vice versa
+    if c1 == len(s2) - c2 and c2 == len(s1) - c1:
+        print('Yes')
     else:
-        print('NO')
-
-def inversion(s,l,r):
-    s_list = list(s)
-    for i in range(l, r + 1):
-        if s_list[i] == '0':
-            s_list[i] = '1'
-        else:
-            s_list[i] = '0'
-    return ''.join(s_list)
+        print('No')
+    
 
 
 t = int(input())
