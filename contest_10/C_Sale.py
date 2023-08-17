@@ -1,4 +1,7 @@
+"""
+Put the negative elements into an array, sort them, and find the sum of m largest modulus.
 
+"""
 
 n ,m = map(int, input().split())
 a = list(map(int, input().split()))
