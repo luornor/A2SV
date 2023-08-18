@@ -6,25 +6,21 @@ t = int(input())
 #l-2
 #h-1
 def solve(s):
-    freq = {}
-    for char in s:
-        freq[char] = freq.get(char, 0) + 1
+    hashset = set()
+    ans = []
+
+    for c in s:
+        if c not in hashset:
+            hashset.add(c)
+        else:
+            ans.append(c)
+            hashset.remove(c)
+
+    ans += ans
+    for char in hashset:
+        ans.append(char)
     
-    sorted_chars = sorted(freq.items(), key=lambda x: x[1], reverse=True)
-    
-    result = ''
-    for char, count in sorted_chars:
-        result += char * count
-    
-    if len(result) > 2:
-        mid = len(result) // 2
-        first_half = result[:mid]
-        second_half = result[mid:]
-        result = ''
-        for i in range(len(first_half)):
-            result += first_half[i] + second_half[i]
-    
-    print(result)
+    print(''.join(ans))
 
 
 for _ in range(t):
