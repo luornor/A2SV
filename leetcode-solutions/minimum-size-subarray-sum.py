@@ -1,5 +1,5 @@
 class Solution:
-    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+    def minSubArrayLen(target,nums):
         n = len(nums)
         win_start = 0 #start of window
         min_size  = float('inf')  #minimum length of window
