@@ -8,10 +8,7 @@ def solve(a,n):
         hmap[num]+=1
         if hmap[num]>=3:
             ans = num
-            break
-
-    # for num in a:
-        
+            break        
                         
     print(ans)
     
