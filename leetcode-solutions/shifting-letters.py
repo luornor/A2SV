@@ -1,5 +1,5 @@
 class Solution:
-    def shiftingLetters(self, s: str, shifts: List[int]) -> str:
+    def shiftingLetters(self,s,shifts):
         ans = ''
         
         p_s = [0]*(len(shifts)+1)

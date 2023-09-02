@@ -1,33 +1,38 @@
 
-mat = [[1,2,3],
-        [4,5,6],
-        [7,8,9]]
+# mat = [[1,2,3],
+#         [4,5,6],
+#         [7,8,9]]
+grid = [[2,5,4],
+        [1,5,1]]
 
-sum=0
-for i in range(len(mat)):
-    sum+=mat[i][i]
-    if i!= len(mat)-1-i:
-        sum+=mat[i][len(mat)-1-i]
+# sum=0
+# for i in range(len(mat)):
+#     sum+=mat[i][i]
+#     if i!= len(mat)-1-i:
+#         sum+=mat[i][len(mat)-1-i]
 # print(sum)
  
-cols = len(mat[0])
-rows = len(mat[0])
+
+# print(grid[0][0])
+# for i in range(rows):
+#     for j in range(cols):
+#         p_s[i][j]=grid[i][j]+p_s[i-1][j]+p_s[i][j-1]-p_s[i-1][j-1]
+rows = len(grid)
+cols = len(grid[0])
 p_s = [[0]*(cols+1) for _ in range(rows+1)]
+count = 0
+for c in range(cols):
+    count+=grid[0][c]
+    for i in range(rows):
+        p_s[i][0]=count
 
-# p_s[0][0] = mat[0][0]
+count = 0
+for r in range(rows):
+    count+=grid[r][1]
+    for i in range(cols):
+        p_s[0][i]=count
 
-# for i in range(1,rows):
-#     p_s[i][0]=mat[i][0]+p_s[i-1][0]
-# for j in range(1,cols):
-#     p_s[0][j] += mat[0][j]+p_s[0][j-1]
-for i in range(rows):
-    for j in range(cols):
-        p_s[i][j]=p_s[i-1][j]+p_s[i][j-1]-p_s[i-1][j-1]+mat[i][j]
     
-        
-
-
-
 print(p_s)
         
 
