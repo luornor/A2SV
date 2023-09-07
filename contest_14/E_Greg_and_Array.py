@@ -11,13 +11,15 @@
 # for _ in range(k):
 #     x, y = map(int, input().split())
 #     x -= 1 
-#     y -= 1
-#     for i in range(x, y + 1):
+#     for i in range(x, y):
 #         l, r, d = operations[i]
 #         for j in range(l - 1, r):
 #             result[j] += d
 
 # print(*result)
+
+
+
 
 n, m, k = map(int, input().split())
 a = list(map(int, input().split()))
@@ -36,9 +38,9 @@ ps = [0] * (m + 1)
 for i in range(k):
     x, y = map(int, input().split())
     x -= 1  
-    y -= 1
+    # y -= 1
     ps[x] += 1  # Increment the start of the range
-    ps[y + 1] -= 1  # Decrement one past the end of the range
+    ps[y] -= 1  # Decrement one past the end of the range
 
 #actual values for each operation using prefix sum
 for i in range(1, m):

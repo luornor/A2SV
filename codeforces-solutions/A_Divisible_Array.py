@@ -8,7 +8,6 @@ def solve(n):
     print(*a)
 
 
-
 t = int(input())
 for _ in range(t):
     n = int(input())
