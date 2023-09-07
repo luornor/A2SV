@@ -29,20 +29,33 @@ for _ in range(m):
     l, r, d = map(int, input().split())
     operations.append((l, r, d))
 
-# Initialize the result array
-result = [0] * n
 
-# Calculate prefix sum for operations
-df = [0] * (m + 1)
+
+ps = [0] * (m + 1)
 
 for i in range(k):
     x, y = map(int, input().split())
     x -= 1  
-    df[x] += 1  # Increment the start of the range
-    df[y] -= 1  # Decrement one past the end of the range
-print(df)
-#actual values for each operation using prefix sum
-for i in range(1, m):
-    df[i] += df[i - 1]
+    ps[x] += 1  
+    ps[y] -= 1  
 
-print(*result)
+#first range update
+for i in range(1, m):
+    ps[i] += ps[i - 1]
+# print(ps)
+#second range update
+ps2 = [0] * (n+1)
+for i in range(m):
+    l, r, d = operations[i]
+    ps2[l - 1] += ps[i] * d
+    ps2[r] -= ps[i] * d
+# print(result)
+for i in range(1, n):
+    ps2[i] += ps2[i - 1]
+# print(result)
+
+
+for i in range(n):
+    a[i] += ps2[i]
+
+print(*a)
