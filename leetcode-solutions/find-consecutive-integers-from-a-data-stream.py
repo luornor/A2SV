@@ -13,10 +13,8 @@ class DataStream:
             self.count+=1
         else:
             self.count=0
-        if len(self.stream)<self.k:
-            return False
-        else:
-            return self.count>=self.k
+      
+        return self.count>=self.k
 
         
         
