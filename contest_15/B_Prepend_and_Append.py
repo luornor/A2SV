@@ -16,22 +16,6 @@ def solve(n,s):
 
     print(res)
 
-    
-    # l = 0
-    # res = 0
-    # while l<n//2:
-    #     if s[l]==s[n-l-1]:
-    #         res=n-2*l
-    #         break
-    #     l+=1
-
-    # if res==0 and n%2==1:
-    #     return 1
-    # else:
-    #     return res
-       
-    
-
 
 t = int(input())
 for _ in range(t):
