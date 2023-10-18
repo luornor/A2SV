@@ -1,18 +1,21 @@
+def solve(n,arr):
+    Acnt, Bcnt = 0, 0
+    l, r = 0, n - 1
+    Asum, Bsum = arr[l], arr[r]
+    
+    while l <= r:
+        if Asum <= Bsum:
+            Asum += arr[l + 1]
+            l += 1
+            Acnt += 1
+        else:
+            Bsum += arr[r - 1]
+            r -= 1
+            Bcnt += 1
+    
+    print(Acnt,Bcnt,end=" ")
+
 n = int(input())
-bars = list(map(int, input().split()))
+arr = list(map(int, input().split()))
 
-l = 0
-r = n - 1
-alice_time = 0
-bob_time = 0
-while l <= r:
-    if alice_time <= bob_time:
-        l += 1
-        alice_time+=bars[l]
-    else:
-        r -= 1
-        bob_time += bars[r]
-
- 
-
-print(*[l, n-l])
+solve(n,arr)

@@ -1,24 +1,26 @@
-def can(k, v, h):
+def damage(k, a, h):
     res = 0
-    for i in range(len(v) - 1):
-        res += min(k, v[i + 1] - v[i])
+    for i in range(len(a) - 1):
+        res += min(k, a[i + 1] - a[i])
     res += k
-    return res >= h
+    return res
+
+def solve(a,h):
+    l, r = 1, h
+
+    while l <= r:
+        mid= (l+r)//2
+        if damage(mid, a, h)>=h:
+            r = mid - 1
+        else:
+            l = mid + 1
+
+    print(l)
 
 t = int(input())
 
 for _ in range(t):
     n, h = map(int, input().split())
-    v = list(map(int, input().split()))
-    left, right = 1, 10**18
-    res = -1
-
-    while left <= right:
-        mid = left + (right - left) // 2
-        if can(mid, v, h):
-            res = mid
-            right = mid - 1
-        else:
-            left = mid + 1
-
-    print(res)
+    a = list(map(int, input().split()))
+    solve(a,h)
+    
