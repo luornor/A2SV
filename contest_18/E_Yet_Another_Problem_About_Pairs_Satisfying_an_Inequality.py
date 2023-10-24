@@ -4,29 +4,23 @@ def solve(a,n):
     #     for j in range(i+1,n):
     #         if a[i]<i+1<a[j]<j+1:
     #             count+=1
-    pairs = []
-    check = set()
-    for i,num in enumerate(a):
-        if i+1>num and num not in check:
-            pairs.append((num,i+1))
-            check.add(num)
-    
-    if len(pairs)>=2:
-        count=int(factorial(len(pairs))/(factorial(2)*factorial(len(pairs)-2)))
-    else:
-        count=0
+    count = 0
+    valid_indexes = []
 
-    pairs.sort()
-    #check adjanc
-    for i in range(len(pairs)-1):
-        num,idx = pairs[i]
-        if pairs[i+1][0]-pairs[i][0]==1:
-            count-=1
-        if idx in check and pairs[i+1][0]-pairs[i][0]!=1:
-            count-=1
+    for i in range(n):
+        if a[i] >= i+1: continue
+        # count of valid indexes that are less than a[i]
+        count += 1
+        valid_indexes.append(i+1)
 
-    
+    for j in range(n):
+        if j < len(valid_indexes):
+            if valid_indexes[j]<a[j]:
+                count-=1
     print(count)
+    print(valid_indexes)
+
+    
     
 
 
