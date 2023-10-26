@@ -31,3 +31,4 @@ while j<m:
         i+=1
 
 print(cost)
+

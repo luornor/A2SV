@@ -1,4 +1,13 @@
-from math import factorial
+from bisect import bisect_left
+def valid(arr,num):
+    idx_sum = 0
+    for i in range(len(arr)):
+        if arr[i]<num:
+            idx_sum+=1
+
+    return idx_sum
+
+
 def solve(a,n):
     # for i in range(n):
     #     for j in range(i+1,n):
@@ -6,21 +15,16 @@ def solve(a,n):
     #             count+=1
     count = 0
     valid_indexes = []
-
     for i in range(n):
-        if a[i] >= i+1: continue
-        # count of valid indexes that are less than a[i]
-        count += 1
-        valid_indexes.append(i+1)
+        if a[i] < i+1:
+            count += valid(valid_indexes,a[i])
+            valid_indexes.append(i+1)
 
-    for j in range(n):
-        if j < len(valid_indexes):
-            if valid_indexes[j]<a[j]:
-                count-=1
     print(count)
-    print(valid_indexes)
-
-    
+# 0 1 3 4 1 2 8 3
+# 1 3 5 6 7 8 9 10
+# 0 0 1 2 0 1 5 1
+# a[i] < i < a[j] < j  
     
 
 
