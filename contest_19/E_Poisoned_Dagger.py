@@ -7,7 +7,6 @@ def how_much_damage(k, a):
 
 def solve(a,h):
     l, r = 1, h
-
     while l <= r:
         mid= (l+r)//2
         if how_much_damage(mid, a)>=h:
