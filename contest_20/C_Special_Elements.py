@@ -1,16 +1,19 @@
-def count_special_elements(n, a):
-    prefix = [0] * (n + 1)
-    prefix[1] = a[0]
-
-    for i in range(2, n + 1):
-        prefix[i] = prefix[i - 1] + a[i - 1]
+def solve(n, a):
+    #treat array as prefix array
+    count = [0] * (n + 1)
 
     special_count = 0
+    for i in range(n):
+        count[a[i]]+=1
 
-    for i in range(n-1):
-        for j in range(i + 2, n +1):
-            if prefix[j] - prefix[i] in a:
-                special_count += 1
+    for i in range(n):
+        curr_num = a[i]
+        for j in range(i + 1, n):
+            curr_num+=a[j]
+            if curr_num<=n:
+                special_count+=count[curr_num]
+                count[curr_num]=0
+            
 
     return special_count
 
@@ -21,6 +24,6 @@ for _ in range(t):
     n = int(input())
     a = list(map(int, input().split()))
 
-    special_count = count_special_elements(n, a)
+    special_count = solve(n, a)
 
     print(special_count)
