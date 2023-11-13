@@ -1,5 +1,5 @@
 def solve(m,p):
-    
+    pass
 
 t = int(input())
 for _ in range(t):
