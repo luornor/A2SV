@@ -16,7 +16,7 @@ def solve(n,m,s,A,B,a_vals,b_vals):
     max_cost = 0
    
     for i in range(n+1):
-        rem_weight = s-i*A
+        rem_weight = (s-i*A)
         if rem_weight<0:
             break
         #how many items of weight B can we take
