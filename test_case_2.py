@@ -8,9 +8,24 @@ def heappop(heap):
     heapify_down(heap,len(heap),current)
     return min_value
 
-def heapify_down(arr, n, current):
-	#write your code
-    pass
+def swap(heap, i, j):
+    heap[i], heap[j] = heap[j], heap[i]
+
+def heapify_down(heap, n, current):
+    small_child = current
+    left = 2 * current + 1
+    right = 2 * current + 2
+   
+    if left < n and heap[left] < heap[small_child]:
+        small_child = left
+       
+    if right < n and heap[right] < heap[small_child]:
+        small_child = right
+           
+    if small_child != current:
+        swap(heap,current, small_child)
+        heapify_down(heap,n,small_child)
+
 
 def test():
     heap = [2, 4, 5, 7, 9, 10]
