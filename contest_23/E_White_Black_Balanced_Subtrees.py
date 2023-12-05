@@ -1,42 +1,47 @@
-from collections import defaultdict
+import sys
+import threading
 
 
-def solve():
-    n = int(input())
-    nodes = list(map(int,input().split()))
-    s = input()
-    graph = {i+1: [] for i in range(n)}
-    for i in range(n-1):
-        graph[nodes[i]].append(i+2)
 
-    visited = set()
-    res=0
-    w_count = 0
-    b_count = 0
-    def dfs(node):
-        nonlocal res,w_count,b_count
-        visited.add(node)
-        if w_count==b_count:
-            res+=1
-        for neighbour in graph[node]:
-            if neighbour not in visited:
-                dfs(neighbour)
-                if s[neighbour-1]=='b':
-                    b_count+=1
-                else:
-                    w_count+=1
+def main():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        nodes = list(map(int,input().split()))
+        s = input()
+        graph = {i+1: [] for i in range(n)}
+        for i in range(n-1):
+            graph[nodes[i]].append(i+2)
+
+        visited = set()
+        res=0   
+        def dfs(node):
+            nonlocal res
+            count=0
+            visited.add(node)
+            if s[node-1]=='B':
+                count=1
+            else:
+                count=-1
+            for neighbour in graph[node]:
+                if neighbour not in visited:
+                    temp=dfs(neighbour)
+                    count+=temp
+            if count==0:
+                res+=1
+            return count
         
-        return res
+        for i in range(1,n+1):
+            if i not in visited:
+                dfs(i)
+
+        print(res)
+
     
-    for i in range(1,n+1):
-        if i not in visited:
-            return dfs(i)
 
+sys.setrecursionlimit(1 << 30)
+threading.stack_size(1 << 27)
+main_thread = threading.Thread(target=main)
+main_thread.start()
+main_thread.join()
 
-
-
-
-
-t = int(input())
-for _ in range(t):
-    print(solve())
