@@ -15,9 +15,9 @@ def solve(s):
         elif char.islower() and char!='b':
             lower.append((i,char))
     upper+=lower
-    heapify(upper)
-    while upper:
-        res+=heappop(upper)[1]
+    upper.sort()
+    for i,char in upper:
+        res+=char
         
     return res
 

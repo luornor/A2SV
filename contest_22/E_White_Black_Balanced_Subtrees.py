@@ -30,6 +30,7 @@ def main():
         for i in range(1,n+1):
             if i not in visited:
                 dfs(i)
+                
         print(ans)
 main_thread = threading.Thread(target=main)
 main_thread.start()
