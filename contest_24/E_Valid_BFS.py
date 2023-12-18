@@ -11,34 +11,26 @@ def main():
         edges.append((x, y))
 
     sequence = list(map(int, input().split()))
-    graph = defaultdict(list)
+    graph = defaultdict(set)
     for x, y in edges:
-        graph[x].append(y)
-        graph[y].append(x)
+        graph[x].add(y)
+        graph[y].add(x)
 
-    for node in graph:
-        graph[node].sort(key=sequence.index)
-    queue = deque([1])
-    visited = set()
-    res = []
-    while queue:
-        node = queue.popleft()
-        if node in visited:
-            break
-        visited.add(node)
-        res.append(node)
-        for nei in graph[node]:
-            if nei not in visited:
-                queue.append(nei)
+    # print(graph)
+    if sequence[0]!=1:
+        return 'No'
 
-    if sequence == res:
-        print('Yes')
+    l = 0
+    r = 1
+    while r<len(sequence) and l<r:
+        if sequence[r] in graph[sequence[l]]:
+            r+=1
+        else:
+            l+=1
+        
+    if r==len(sequence):
+        return 'Yes'
     else:
-        print('No')
+        return 'No'
 
-
-sys.setrecursionlimit(1 << 30)
-threading.stack_size(1 << 27)
-main_thread = threading.Thread(target=main)
-main_thread.start()
-main_thread.join()
+print(main())
