@@ -1,41 +1,49 @@
+from collections import deque
 def solve():
     n, m, k = map(int, input().split())
-    grid = []
+    maze = []
     for _ in range(n):
         s = input()
-        grid.append(list(s))
+        maze.append(list(s))
 
-    start_x, start_y = -1, -1
+    
+    start = None
     for i in range(n):
         for j in range(m):
-            if grid[i][j] == '.':
-                start_x, start_y = i, j
+            if maze[i][j] == '.':
+                start = (i,j)
                 break
-        if start_x != -1:
+        if start:
             break
-
-    visited = set()
-    def dfs(x, y):
-        nonlocal k
-        k -= 1
-        if k == 0:
-            return
-        if x < 0 or x >= n or y < 0 or y >= m or grid[x][y] != '.':
-            return
         
-        if (x,y) not in visited:
-            grid[x][y] = 'X'
-            visited.add((x,y))
-        
-        
-        dfs(x + 1, y)  
-        dfs(x - 1, y)  
-        dfs(x, y + 1)  
-        dfs(x, y - 1)  
+    visited = set(start)
+    queue = deque([start])
+    directions = [(0,1),(0,-1),(1,0),(-1,0)]
+    count = 0
 
-    dfs(start_x, start_y)
+    while queue and count < k:
+        x, y = queue.popleft()
 
-    for row in grid:
+        if maze[x][y] == '.':
+            maze[x][y] = 'X'
+            count += 1
+
+        for dx, dy in directions:
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < n and 0 <= ny < m and maze[nx][ny] == '.' and (nx, ny) not in visited:
+                queue.append((nx, ny))
+                visited.add((nx, ny))
+    
+    # for i in range(n):
+    #     for j in range(m):
+    #         if maze[i][j] == '.':
+    #             maze[i][j] = '.'
+    #         elif maze[i][j] == 'X':
+    #             maze[i][j] = 'X'
+    #         else:
+    #             maze[i][j] = '#'
+
+    for row in maze:
         res = ''.join(row)
         print(res)
 
