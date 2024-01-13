@@ -1,25 +1,15 @@
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
-        #If cnt is strictly greater than midmidmid. According to the
-        # Pigeonhole Principle, repeated elements are in the 
-        #interval [left,mid]
-        #Otherwise, the repeated element is in the interval
-        # [mid+1,right].
-        l = 0
-        r = len(nums)-1
-        #[1,3,4,2,2]
-        fast = 0
-        slow = 0
-            
-        while True:
-            slow = nums[slow]
-            fast = nums[nums[fast]]
-            if slow==fast:
-                break
+        i = 0
+        n = len(nums)
+        while i < n:
+            idx = nums[i]-1
+            if nums[idx] != nums[i]:
+                nums[idx], nums[i] = nums[i], nums[idx]
+            else:
+                i += 1
 
-        slow = 0
-        while slow!=fast:
-            slow = nums[slow]
-            fast = nums[fast]
-
-        return slow
+        for i, num in enumerate(nums):
+            if i+1 != num:
+                return num
+        
