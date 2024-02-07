@@ -12,8 +12,7 @@ def solve():
         graph[v].append(u)
 
     queue = deque([(1)])
-    for u,v in graph.items():
-        if s[u]=
+  
     
 
 t = int(input())
