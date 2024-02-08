@@ -1,5 +1,5 @@
 class Solution:
-    def findDuplicate(self, nums: List[int]) -> int:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
         i = 0
         n = len(nums)
         while i < n:
@@ -9,7 +9,13 @@ class Solution:
             else:
                 i += 1
 
+        res = []
         for i, num in enumerate(nums):
             if i+1 != num:
-                return num
+                res.append(num)
+                res.append(i+1)
+
+        return res
+            
+                 
         
