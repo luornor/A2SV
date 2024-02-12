@@ -1,26 +1,26 @@
 t = int(input())
 
-for _ in range(t):
+def solve():
     s = input()
-    l = 0
-    r = 2*len(s)
+    
     n = len(s)
-    while l<r:
-        mid = (l+r)//2
-        
-        leftmost = 0
-        rightmost = 0
+    ans = [0]
+    for i in range(n):
+        if s[i]=='R':
+            ans.append(i+1)
 
-        for i in range(n):
-            if s[i] == 'L':
-                leftmost = max(leftmost - mid, 0)
-            else:
-                rightmost = min(rightmost + mid, n + 1)
+    ans.append(n+1)
+    d = -1
+    for i in range(1,len(ans)):
+        d = max(d,ans[i]-ans[i-1])
 
-        if leftmost >= rightmost:
-            r = mid
-        else:
-            l = mid + 1
+    return d
+    # a = list(map(len,input().split('R')))
+    # print(a)
+    # return max(a)+1
 
-    print(l)
+
+for _ in range(t):
+    print(solve())
+   
 
