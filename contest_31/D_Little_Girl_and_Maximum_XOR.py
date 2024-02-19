@@ -9,7 +9,9 @@ l,r = map(int,input().split())
 xor = l ^ r
 bit_len = xor.bit_length()
 
-# print(1<<bit_len)
+# print(xor)
+# print(bit_len)
+
 max_xor = (1 <<bit_len) - 1
 
 print(max_xor)

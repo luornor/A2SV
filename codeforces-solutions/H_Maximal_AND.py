@@ -13,6 +13,7 @@ def solve():
                 bitmask[i]+=1
             num>>=1
     
+    
     for i in range(30,-1,-1):
         curr = n-bitmask[i]
         
