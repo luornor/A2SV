@@ -11,7 +11,7 @@ def solve():
     red_sum = list(accumulate(reds))
     blue_sum = list(accumulate(blues))
 
-    maxx = max(0,red_sum) + max(0,blue_sum)
+    maxx = max(0,max(red_sum)) + max(0,max(blue_sum))
     # for i in range(n+1):
     #     for j in range(m+1):
     #         maxx = max(maxx,red_sum[i]+blue_sum[j])
