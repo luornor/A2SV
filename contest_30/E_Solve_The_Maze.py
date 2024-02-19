@@ -5,6 +5,7 @@ def solve():
     for _ in range(n):
         maze.append(input())
 
+
 t = int(input())
 for _ in range(t):
     print(solve())
