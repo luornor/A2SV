@@ -1,22 +1,25 @@
 def solve():
     n,k = map(int,input().split())
-    a = list(map(int,input().split()))
-
-    a.sort()
-
-    left = 0
-    right = n - 1
-    total_cost = 0
-
-    while left < right:
-        weight = a[left] + a[right]
-        total_cost += weight // k
-        left += 1
-        right -= 1
-
-    return total_cost
+    a = [0]
+    l = 1
+    r = n
+    for x in map(int, input().split()):
+        n += x // k
+        a.append(x % k)
     
+    a.sort()
+    while l < r:
+        if a[l] + a[r] >= k:
+            r -= 1
+        l += 1
+        
+    return n - r
+
+	 			 			  	   	   				  		 	
 
 t = int(input())
 for _ in range(t):
     print(solve())
+
+
+     			  		 			   		 					 	

@@ -7,12 +7,21 @@ l,r = map(int,input().split())
 
 # print(maxx)
 xor = l ^ r
-bit_len = xor.bit_length()
+n = xor.bit_length()
 
 # print(xor)
 # print(bit_len)
 
-max_xor = (1 <<bit_len) - 1
+a = r>>(n) << n
+
+
+x = a+(2**n)
+
+y = a + ((2**n)-1 )
+print(a)
+print(x,y)
+
+max_xor = (1<<n) - 1
 
 print(max_xor)
 
