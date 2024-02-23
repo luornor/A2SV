@@ -4,7 +4,12 @@ def solve():
     #if count is greater than one find position of first one and return
     #the number
     #else find first zero and combine with number of first one
-    number_of_ones = x.bit_count()
+    number_of_ones = 0
+    for i in range(x.bit_length()):
+        if x & 1<<i !=0:
+            number_of_ones+=1
+        
+
     #find first one
     pos = 0
     while pos<x.bit_length():
