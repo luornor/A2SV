@@ -6,28 +6,27 @@
 #         self.right = right
 class Solution:
     def rob(self, root: Optional[TreeNode]) -> int:
-        memo = {}
-
+        #iterative dfs for bottom up
+        
         def dp(root):
             if root is None:
-                return 0
+                return [0,0]
             
-            if root in memo:
-                return memo[root]
 
-            #when we chose to rob starting from the root
-            rob = root.val
-            if root.left:
-                rob += dp(root.left.left) + dp(root.left.right)
-            if root.right:
-                rob += dp(root.right.left) + dp(root.right.right)
+            left = dp(root.left)
+            right = dp(root.right)
 
-            #when we skip the root and rob connected nodes
-            skip = dp(root.left) + dp(root.right)
-            #find max between the two
-            memo[root] = max(rob, skip)
-            return memo[root]
+            res =[]
+            #root included
+            res.append(root.val+ left[1] + right[1])
 
-        return dp(root)
+            #root excluded
+            res.append(max(left)+max(right))
+            
+            return res
+
+        return max(dp(root))
+
+        
 
         
