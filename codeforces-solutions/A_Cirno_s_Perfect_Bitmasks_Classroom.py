@@ -1,29 +1,28 @@
 def solve():
     x = int(input())
-    count = x.bit_count()
-    binary_num = bin(x)[2:]
-    first_one = binary_num.rfind('1')
-    first_zero = binary_num.rfind('0')
-    ans = ['0']*(x.bit_length())
-    if x==1:
-        return 3
-    # if count is one find position of first one turn it 1 find first zero turn it to one
-    # else find first one  and change it to 1
-    if count==1:
-        ans[first_one]='1'
-        ans[first_zero]='1'
-        # print(ans)
-        # print(binary_num)
+    #count the number of ones
+    #if count is greater than one find position of first one and return
+    #the number
+    #else find first zero and combine with number of first one
+    number_of_ones = x.bit_count()
+    #find first one
+    pos = 0
+    while pos<x.bit_length():
+        if x & 1<<pos != 0:
+            break
+        pos+=1
 
+    #find first zero
+    zero = 0
+    while zero<x.bit_length():
+        if x & 1<<zero ==0:
+            break
+        zero+=1
+
+    if number_of_ones > 1:
+        return 2**pos
     else:
-        ans[first_one]='1'
-    
-    return int(''.join(ans),2)
-
-
-    
-
-    
+        return (1<<pos) ^ (1<<zero)
 
 t = int(input())
 
