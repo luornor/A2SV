@@ -1,12 +1,13 @@
 def solve():
     n,k = map(int,input().split())
-    a = [0]
+    a = list(map(int, input().split()))
+    
     l = 1
     r = n
-    for x in map(int, input().split()):
-        n += x // k
-        a.append(x % k)
-    
+    for i in range(n):
+        n += a[i] // k
+        a[i] = a[i]%k
+    a = [0] + a
     a.sort()
     while l < r:
         if a[l] + a[r] >= k:
@@ -14,12 +15,9 @@ def solve():
         l += 1
         
     return n - r
-
-	 			 			  	   	   				  		 	
+			  	   	   				  		 	
 
 t = int(input())
 for _ in range(t):
     print(solve())
-
-
-     			  		 			   		 					 	
+	 			   		 					 	
