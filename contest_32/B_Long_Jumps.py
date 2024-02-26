@@ -2,7 +2,6 @@
 def solve():
     n =int(input())
     a = list(map(int,input().split()))
-    max_score = 0
     dp = [0]*(n+1)
 
     for i in range(n,0,-1):
