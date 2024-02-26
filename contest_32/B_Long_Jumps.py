@@ -9,6 +9,7 @@ def solve():
             dp[i]=a[i-1]
         else:
             dp[i] = a[i-1] + dp[i + a[i-1]]
+            
     # print(dp)
     return max(dp)
 
