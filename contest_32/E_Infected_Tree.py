@@ -8,20 +8,22 @@ def solve():
         graph[u].append(v)
         graph[v].append(u)
 
-    infected = [False]*(n+1)
+    visited = set() 
     saved_vertices = 0
-
-    def dfs(current_node,parent):
+    print(graph)
+    #to choose or not to choose
+    def dfs(current_node):
         nonlocal saved_vertices
-
-        infected[current_node]=True
+        
+        visited.append(current_node)
+        
 
         for nei in graph[current_node]:
-            #if neighbour is not infected
-            if not infected[nei] and nei != parent:
-                dfs(nei,current_node)
+            #pick or don't pick
+            if nei not in visited:
+                max(dfs(nei,True) , dfs(nei,False))
 
-        saved_vertices+=1
+        return saved_vertices
     
     dfs(1,None)
 

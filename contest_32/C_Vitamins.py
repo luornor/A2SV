@@ -7,11 +7,11 @@ for _ in range(n):
     juices.append((price, vitamins))
 
 #juices contain the vitamins represented as a number
-
+    
 dp = [float('inf')] * 8
 dp[0] = 0
 for price, vitamins in juices:
-      
+    
     for mask in range(7):
         new_mask = mask | vitamins
         dp[new_mask] = min(dp[new_mask], dp[mask] + price)
