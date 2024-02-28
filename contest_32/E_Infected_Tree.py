@@ -8,6 +8,8 @@ def solve():
         graph[u].append(v)
         graph[v].append(u)
 
+    child_count = defaultdict(int)
+    
     visited = set() 
     saved_vertices = 0
     print(graph)
