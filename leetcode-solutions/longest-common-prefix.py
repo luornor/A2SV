@@ -2,6 +2,7 @@ class TrieNode:
     def __init__(self):
         self.is_end = False
         self.children = {}
+        self.count = 0
 
 class Solution:
     def __init__(self):
@@ -14,38 +15,29 @@ class Solution:
                 if c not in curr.children:
                     curr.children[c] = TrieNode()
 
+                curr.children[c].count+=1
                 curr = curr.children[c]
+
             curr.is_end=True
             
-    def longestCommonPrefix(self, strs: List[str]) -> str:
-        min_word = strs[0]
-        for i in range(1,len(strs)):
-            if len(strs[i]) < len(min_word):
-                min_word=strs[i]
 
+            
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        
+        res = ''
+        
         for word in strs:
             self.insert(word)
-
+    
+        longest_word = max(strs,key=len)
         curr = self.root
-        res = ''
-
-        if len(curr.children)>1:
-            return res
-
-        for c in min_word:
-            if len(curr.children)>1:
-                return res
-            res+=c
-            curr = curr.children[c]
-
+        for c in longest_word:
+            if c in curr.children:
+                if curr.children[c].count==len(strs):
+                    res+=c
+                if curr.children[c].count<len(strs):
+                    break
+                curr = curr.children[c]
 
         return res
-        
-        
-            
-            
-
-        
-
-        
         
