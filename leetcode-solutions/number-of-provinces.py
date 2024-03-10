@@ -1,29 +1,49 @@
+class UnionFind:
+    def __init__(self,n):
+        self.parent = [i for i in range(n)]
+        self.size = [1]*n
+
+    def find(self,x):
+        if self.parent[x]==x:
+            return x
+        self.parent[x]=self.find(self.parent[x])
+
+        return self.parent[x]
+
+    def union(self,x,y):
+        rootx = self.find(x)
+        rooty = self.find(y)
+        
+        if rootx != rooty:
+            if self.size[rootx]<self.size[rooty]:
+                self.parent[rootx]=rooty
+                self.size[rooty]+=self.size[rootx]
+            else:
+                self.parent[rooty]=rootx
+                self.size[rootx]+=self.size[rooty]
+
+    def connected(self,x,y):
+        return self.find(x)==self.find(y)
+
+
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        visited = set()
-        def dfs(node):
-            if not graph[node]:
-                return 
-            if node not in visited:
-                visited.add(node)
-            else:
-                return
-            for neighbor in graph[node]:
-                dfs(neighbor)
+        n = len(isConnected)
+        dis_join = UnionFind(n)
 
-            
-        
-        graph = {i+1:[] for i in range(len(isConnected))}
-        for i in range(len(isConnected)):
-            for j in range(len(isConnected[0])):
+        for i in range(n):
+            for j in range(n):
                 if isConnected[i][j]== 1 and i!=j:
-                    graph[i+1].append(j+1)
-        # print(graph)
-        count=0
-        for key,val in graph.items():
-            if key not in visited:
-                dfs(key)
-                count+=1
-        return count
+                    dis_join.union(i,j)
+          
+        connected = set()
+        for i in range(n):
+            parent = dis_join.find(i)
+            connected.add(parent)
+
+        return len(connected)
+
+
+        
          
 
