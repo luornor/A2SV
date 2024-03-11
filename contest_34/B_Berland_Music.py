@@ -8,13 +8,11 @@ def solve():
     songs = sorted([[s[i],p[i],i] for i in range(n)])
     res = [0]*n
 
+
     # print(songs)
     for i in range(n):
         # print(res)
         res[songs[i][2]] = i+1
-
-
-    # print(songs)
 
 
     return res

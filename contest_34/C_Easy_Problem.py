@@ -1,21 +1,39 @@
-n = int(input())
-s = input()
-a = list(map(int,input().split()))
+from collections import defaultdict
+import sys
+import threading
 
-check = 'hard'
-is_hard = False
-i = 0
-idx = []
-for c in s:
-    if i==len(check):
-        is_hard=True
-        break
-    if c==check[i]:
-        idx.append(a[i])
-        i+=1
+sys.setrecursionlimit(1 << 30)
+threading.stack_size(1 << 27)
+ 
 
-if is_hard:
-    print(idx)
-else:
-    print(0)
+def main():
+    n = int(input())
+    s = input()
+    a = list(map(int,input().split()))
 
+    check = "hard"
+    memo = {}
+    def dp(i,j):
+        if (i,j) in memo:
+            return memo[(i,j)]
+        
+        if j==len(check):
+            return float('inf')
+        
+        if i==len(s):
+            return 0
+        
+        if s[i]==check[j]:
+            memo[(i,j)] = min(dp(i+1,j)+a[i],dp(i+1,j+1))
+
+        else:
+            memo[(i,j)] = dp(i+1,j)
+
+        return memo[(i,j)]
+        
+    print(dp(0,0))
+   
+
+main_thread = threading.Thread(target=main)
+main_thread.start()
+main_thread.join()
