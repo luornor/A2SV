@@ -73,4 +73,26 @@
 #             curr = curr.children[idx]
             
 #         return curr.is_end if not prefix else True
+
+#sieve of eratosthenes
+from math import sqrt
+
+
+def generate_primes(num):
     
+    marked = [False]* num
+
+    for i in range(2,int(sqrt(num))+1):
+        for j in range(i*i,num,i):
+             if j%i==0:
+                marked[j]=True
+                
+                                
+    res = []
+    for i in range(2,len(marked)):
+        if not marked[i]:
+              res.append(i)
+              
+    return res
+
+print(generate_primes(10))
