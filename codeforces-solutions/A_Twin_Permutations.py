@@ -6,6 +6,6 @@ for _ in range(t):
     maxx = max(a)
     new = []
     for num in a:
-        new.append(maxx-num)
+        new.append(maxx-num+1)
     
     print(*new)
