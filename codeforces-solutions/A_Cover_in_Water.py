@@ -1,16 +1,16 @@
 def solve():
     n = int(input())
-    s = input()
+    string = input()
     res = 0
     
     for i in range(n-2):
-        if s[i]==s[i+1]==s[i+2]=='.':
+        if string[i]==string[i+1]==string[i+2]=='.':
             return 2
-        elif s[i]=='.':
+        elif string[i]=='.':
             res+=1
-    if len(s)>=2 and s[-2]=='.':
+    if len(string)>=2 and string[-2]=='.':
         res+=1
-    if s[-1]=='.':
+    if string[-1]=='.':
         res+=1
 
     return res
