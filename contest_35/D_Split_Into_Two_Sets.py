@@ -1,6 +1,3 @@
-
-from collections import defaultdict
-
 def bootstrap(f, stack=[]):
     from types import GeneratorType
     def wrappedfunc(*args, **kwargs):
@@ -8,24 +5,21 @@ def bootstrap(f, stack=[]):
             return f(*args, **kwargs)
         else:
             to = f(*args, **kwargs)
-        while True:
-            if type(to) is GeneratorType:
-                stack.append(to)
-                to = next(to)
-            else:
-                stack.pop()
-            if not stack:
-                break
-            to = stack[-1].send(to)
-        return to
- 
+            while True:
+                if type(to) is GeneratorType:
+                    stack.append(to)
+                    to = next(to)
+                else:
+                    stack.pop()
+                    if not stack:
+                        break
+                    to = stack[-1].send(to)
+            return to 
     return wrappedfunc
-
-
 
 def solve():
     n = int(input())
-    graph = defaultdict(list)
+    graph = {i:[] for i in range(1, n+1)}
     flag = False
     for _ in range(n):
         a,b = map(int,input().split())
@@ -41,25 +35,27 @@ def solve():
     color = [-1]*(n+1)
     @bootstrap
     def dfs(node):
+        temp = True
         for neighbour in graph[node]:
             #already coloured
             if color[neighbour]!=-1:
                 if color[node]==color[neighbour]:
-                    return False
+                    temp = False
             else:
                 #uncoloured
                 color[neighbour] = 1 - color[node]
-                if not dfs(neighbour):
-                    return False
+                x = yield dfs(neighbour)
+                temp = temp and x
 
-        return True
+        yield temp
 
 
     for node in range(1,n+1):
         #not colored
         if color[node]==-1:
             color[node]=0
-            if not dfs(node):
+            y = dfs(node)
+            if not y:
                 return 'NO'
 
     return 'YES'
@@ -68,5 +64,3 @@ def solve():
 t = int(input())
 for _ in range(t):
     print(solve())
-
-    
