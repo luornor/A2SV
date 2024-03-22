@@ -21,8 +21,8 @@ class Solution:
 
         for  i in range(n-m+1):
             if needle_hash==haystack_hash:
-                if haystack[i:i+m]==needle:
-                    return i
+                return i
+                
             if i<n-m:
                 encode_haystack = ord(haystack[i])-ref+1
                 next_char = ord(haystack[i+m])-ref+1
