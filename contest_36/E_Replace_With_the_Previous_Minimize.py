@@ -8,5 +8,4 @@ def solve():
 
 t = int(input())
 for _ in range(t):
-    print(ord('y')-ord('t'))
     print(solve())

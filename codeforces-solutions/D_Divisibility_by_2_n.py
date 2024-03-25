@@ -2,28 +2,34 @@ def solve():
     n = int(input())
     a = list(map(int,input().split()))
 
-    count_two = sum(1 for num in a if num%2==0)
+    def count_two(num):
+        count = 0
+        while num%2==0:
+            count+=1
+            num//=2
+        return count
     
-    if count_two>=n:
+    total_twos = sum(count_two(num) for num in a)
+    
+    if total_twos>=n:
         return 0
     
-    
+    indx = []
+    for i in range(1,n+1):
+        if count_two(i)>0:
+            indx.append(count_two(i))
 
-    operations = 0
-    for num in a:
-        while num % 2 ==0 and count_two<n:
-            num*=2
-            count_two+=1
-            operations+=1
-
-        if count_two>=n:
-            break
-        
-    if count_two>=n:
-        return operations
-    else:
-        return -1
+    # print(indx)
+    #for least number of operations
+    indx.sort(reverse=True)
+    ops = 0
+    for count in indx:
+        total_twos+=count
+        ops+=1
+        if total_twos>=n:
+            return ops
     
+    return -1
 
 t = int(input())
 for _ in range(t):
