@@ -6,6 +6,7 @@ for _ in range(t):
     print(a)
     long = 0
     for num in a:
+        num.strip(' ')
         long = max(len(num),long)
 
     print(long)
