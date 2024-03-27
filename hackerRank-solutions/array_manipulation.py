@@ -1,4 +1,4 @@
-#!/bin/python3
+# !/bin/python3
 
 import math
 import os
@@ -22,15 +22,17 @@ def arrayManipulation(n, queries):
     for a,b,k in queries:
         df[a]+=k
         df[b+1]-=k
-        
-    maxi = float("-inf")
-    total = 0
+    
+    
+    res = float("-inf")
+    running_sum = 0
     for i in range(1,n+1):
-        total += df[i]
-        maxi = max(maxi,total)
+        running_sum+=df[i]
+        res = max(res,running_sum)
+    
         
        
-    return maxi
+    return res
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
