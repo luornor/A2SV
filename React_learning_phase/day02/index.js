@@ -21,7 +21,23 @@ filteredByName = lodash.filter(myArr, function(o) {
 
 maxx = lodash.max(arr)
 
+chunks =lodash.chunk(arr, 2);
+
+function saveChanges() {
+  console.log('Saving changes...');
+}
+
+// Debounce the function with a 500ms delay
+const debouncedSave = _.debounce(saveChanges, 500);
+
+debouncedSave();
+debouncedSave();
+debouncedSave();
+
+// Only one "Saving changes..." message will be logged after 500ms
+
 console.log('Sorted Array:', sorted_arr);
 console.log('Maximum number in array:', maxx);
 console.log('Filtered array: ', filteredByName)
+console.log('Array in chunks: ', chunks)
 
